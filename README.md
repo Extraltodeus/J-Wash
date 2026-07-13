@@ -117,7 +117,6 @@ repo / file / local path is available at the bottom of the tab.
 
 ![models tab](assets/lens.png)
 
-#### Note : You need to load a lens to enable the editor.
 
 ### 3. Chat with the live lens
 
