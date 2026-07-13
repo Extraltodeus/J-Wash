@@ -23,7 +23,9 @@ ship**.
      │  files exist.                                                           │
      └───────────────────────────────────────────────────────────────────────┘ -->
 
-![J-Wash — chat with the live Jacobian lens](assets/animation1.gif)
+![J-Wash — chat with the live Jacobian lens](assets/header.png)
+<p align="center"><sub>Introducing non-expert friendly alignment!</sub></p>
+
 
 ---
 
@@ -120,6 +122,8 @@ listed automatically; **Browse** adds any model folder on disk to the list
 (nothing is copied — the blue button forgets the entry, the red trash deletes
 actual files). fp32 models are auto-converted to bf16 to halve disk usage.
 
+![models tab](assets/models_tab.png)
+
 ### 2. Load a Jacobian lens
 
 In **Lens**, J-Wash lists compatible lenses for the loaded model — local ones you
@@ -131,7 +135,8 @@ you can even pick a lens **while the model is still loading**, it chain-loads
 when ready. No lens? Fit one in the **Fit** tab (see below). Manual loading by
 repo / file / local path is available at the bottom of the tab.
 
-![The Lens tab and the live Frequencies view](assets/lens-tab.png)
+![models tab](assets/lens.png)
+
 
 ### 3. Chat with the live lens
 
@@ -141,8 +146,22 @@ generated token:
 - **Frequencies** (default): tokens the layers "read," aggregated by how often they
   appear — size ∝ frequency. Click a token to **pin** it (rank curves + a rank
   heatmap per layer); right-click to hide noise.
-- **Heatmap**: layers × positions, top token per cell (reading = amber, thinking =
+
+
+![The Lens tab and the live Frequencies view](assets/freq_animation.gif)
+
+Once a token is pinned, you can see it's activation (vertical axis) along the tokens generated (horizontal axis). The tokens related to the column hovered can be seen on the upper part :
+
+![Graphs view](assets/animation1.gif)
+
+- **Heatmap view**: layers × positions, top token per cell (reading = amber, thinking =
   blue).
+
+![Heatmap view and a pinned token's per-layer rank curves](assets/heatmap_animation.gif)
+
+Selecting a token will display related activations in all layers:
+
+![Activations](assets/activations.png)
 
 Leading/trailing spaces are rendered with `˽` (so `˽Euro` ≠ `Euro`). Replies
 render as markdown (toggleable), can be **edited in place** (✎ — later turns use
@@ -151,12 +170,16 @@ stopped). Conversations are persisted (SQLite + full-text search), branchable
 from any node, and replayable offline. Export a conversation as JSON or
 Markdown, with or without lens frames. The lens view's height is draggable.
 
-![Heatmap view and a pinned token's per-layer rank curves](assets/heatmap-pins.png)
 
 ### 4. Edit tokens ☢
 
-Open the **token editor** (the ☢ button in the composer, or the ☢ on a pinned
+
+Open the **token editor** (the **☢** button in the composer, or the ☢ on a pinned
 token). Add rules:
+
+![Edit](assets/edit.png)
+
+![Edit2](assets/edit2.png)
 
 - **multiply ×f** — `×0` removes a token's direction, `×0.5` attenuates, `×2`
   amplifies;
@@ -169,15 +192,15 @@ editing. A mode toggle switches between:
 - **Per-layer steering** (default) — the most expressive way to *explore*, but it
   does not export faithfully.
 - **Read projection** (pure-weights) — a change of basis of the downstream reads so
-  the **live preview matches the exported checkpoint exactly**. Use this to ship.
+  the **live preview matches the exported checkpoint exactly**. Use this to save a model and preview the result.
+
+![projection](assets/projection.png)
 
 > **Architecture note**: models whose layers normalize their *writes* into the
 > residual stream (Gemma 2/3 style, `pre/post_feedforward_layernorm`) can't take
 > the read projection. On those, the toggle offers **Global projection** (W_U
 > abliteration) instead — still pure weights, faithful for full removals and
 > replacements (a rule's layer range is ignored: the projection is global).
-
-![The token editor: rules, mode toggle, and export](assets/token-editor.png)
 
 ### 5. Export the edit
 
@@ -188,6 +211,10 @@ Save a set of rules as a **preset** and re-apply it in one click. Export an edit
 - **modified layers** (safetensors);
 - **LoRA** (PEFT) — the exact low-rank diff between the edited weights and the
   originals (the edit is low-rank by construction, so nothing is approximated).
+
+
+![export](assets/export.png)
+
 
 Exports are standard safetensors weights — everything that follows from that
 (quantizing, converting to other runtimes' formats, publishing on the Hub)
