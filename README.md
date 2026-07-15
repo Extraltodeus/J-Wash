@@ -206,7 +206,7 @@ Once a token is pinned, you can see it's activation (vertical axis) along the to
 
 The tokens related to the column hovered can be seen in the upper part.
 
-Here, the levels of activation for the token " messing" while the token " sat" was generated:
+Here, the levels of activation for the token " messing" while the token " sat" was generated (my mouse was on this column when I did the capture):
 
 ![Graphs view](assets/animation1.gif)
 
