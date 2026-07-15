@@ -202,7 +202,7 @@ generated token:
 
 ![The Lens tab and the live Frequencies view](assets/freq_animation.gif)
 
-Once a token is pinned, you can see it's activation (vertical axis) along the tokens generated (horizontal axis). The tokens related to the column hovered can be seen in the upper part :
+Once a token is pinned, you can see it's activation (vertical axis) along the tokens generated (horizontal axis). The tokens related to the column hovered can be seen in the upper part (here: " sat"):
 
 ![Graphs view](assets/animation1.gif)
 
