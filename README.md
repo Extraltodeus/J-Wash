@@ -22,6 +22,27 @@ ship**.
 
 ---
 
+- [What it's built on](#what-its-built-on)
+- [Installation](#installation)
+  - [Native](#native)
+  - [Docker](#docker)
+- [Running](#running)
+- [Usage](#usage)
+  - [1. Load a model](#1-load-a-model)
+  - [2. Load a Jacobian lens](#2-load-a-jacobian-lens)
+  - [3. Chat with the live lens](#3-chat-with-the-live-lens)
+  - [4. Edit tokens ☢](#4-edit-tokens-)
+  - [5. Export the edit](#5-export-the-edit)
+  - [6. Fit your own lens](#6-fit-your-own-lens)
+- [CLI (no UI)](#cli-no-ui)
+- [Project layout](#project-layout)
+- [Notes](#notes)
+- [Final words](#final-words)
+- [Credits](#credits)
+- [License](#license)
+
+---
+
 ## What it's built on
 
 J-Wash is built on **Anthropic's Jacobian lens** (the
