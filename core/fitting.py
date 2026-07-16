@@ -140,9 +140,9 @@ def _default_dim_batch(device):
     Measured on a 4B bf16 fit: 8 fits in 16 GB, 4 in 12 GB."""
     try:
         total = gpu_stats()[int(device.split(":")[1])]["vram_total"]
-        return 8 if total >= 15 * 2**30 else 4
+        return 4 if total >= 15 * 2**30 else 2
     except Exception:
-        return 4
+        return 1
 
 
 def _now():
