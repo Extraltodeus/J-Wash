@@ -1,0 +1,52 @@
+# Git
+.git/
+.gitattributes
+.gitignore
+
+# Large runtime dirs (mounted as volumes at runtime)
+hf_cache/
+lenses/
+data/
+
+# Vendor deps (cloned inside the Dockerfile)
+vendor/
+
+# Python cache / venvs
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+env/
+
+# Node / front-end (rebuilt inside the container)
+ui/node_modules/
+ui/dist/
+
+# Editor / tooling
+.claude/
+.vscode/
+.idea/
+.reprise/
+
+# Docs / assets (not needed at runtime)
+assets/
+README.md
+LICENSE
+NOTICE
+
+# Dev / test scripts
+scripts/
+
+# Local launchers / notes
+start.bat
+start - Copie.bat
+start.local.bat
+TODO.txt
+TODO_later.txt
+
+# Docker compose (not needed inside the image)
+docker-compose.yml
+
+# Logs / misc
+*.log
+*.stackdump
